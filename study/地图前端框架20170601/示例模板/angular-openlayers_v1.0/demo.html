@@ -1,0 +1,152 @@
+<html ng-app="demo">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>新版地图示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="plugin/font-awesome-4.7.0/css/font-awesome.min.css" />
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+
+    <!-- angular -->
+    <script src="plugin/angular-1.6.4/angular.min.js"></script>
+    <script src="plugin/angular-1.6.4/angular-sanitize.min.js"></script>
+    <script src="plugin/angular-1.6.4/angular-ui-router.min.js"></script>
+
+    <!-- jquery-ui -->
+    <script src="plugin/jquery-ui/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="plugin/jquery-ui/jquery-ui.min.css" />
+    <script src="js/slider.js"></script>
+
+    <!-- openlayers -->
+    <link rel="stylesheet" href="plugin/OpenLayers/4/ol.css" />
+    <link rel="stylesheet" href="plugin/OpenLayers/dist/angular-openlayers-directive.css" />
+    <link rel="stylesheet" href="plugin/OpenLayers/p-ol3/p-ol3.min.css" />
+    <link rel="stylesheet" href="plugin/color-picker/color-picker.min.css" />
+
+    <script src="plugin/OpenLayers/4/ol-debug.js"></script>
+    <script src="plugin/OpenLayers/p-ol3/p-ol3.js"></script>
+    <script src="plugin/color-picker/color-picker.js"></script>
+    <script src="plugin/OpenLayers/dist/angular-openlayers-directive.js"></script>
+    <script src="plugin/OpenLayers/externs/FileSaver.min.js"></script>
+</head>
+
+<body ng-controller="appCtrl">
+    <div class="menu">
+        <div>
+            <div class="menuItem" ng-click="changeMenu(1)"><i class="fa fa-caret-down"></i>基础功能</div>
+            <ul>
+                <li ng-click="changeMenu(11)" ng-class="{11:'active'}[menu]">olControl</li>
+                <li ng-click="changeMenu(12)" ng-class="{12:'active'}[menu]">olInteraction</li>
+                <li ng-click="changeMenu(13)" ng-class="{13:'active'}[menu]">olLayer</li>
+            </ul>
+        </div>
+        <div>
+            <div class="menuItem"><i class="fa fa-caret-down"></i>加载点线面</div>
+            <ul>
+                <li ng-click="changeMenu(21)" ng-class="{21:'active'}[menu]">olPath</li>
+                <li ng-click="changeMenu(22)" ng-class="{22:'active'}[menu]">olMarker</li>
+                <li ng-click="changeMenu(23)" ng-class="{23:'active'}[menu]">olCluster</li>
+                <li ng-click="changeMenu(24)" ng-class="{24:'active'}[menu]">olTrack(轨迹回放)</li>
+                <li ng-click="changeMenu(25)" ng-class="{25:'active'}[menu]">olRealTrack(实时跟踪)</li>
+                <li ng-click="changeMenu(26)" ng-class="{26:'active'}[menu]">olNearby(周边资源)</li>
+            </ul>
+        </div>
+        <div>
+            <div class="menuItem"><i class="fa fa-caret-down"></i>其他功能</div>
+            <ul>
+                <li ng-click="changeMenu(31)" ng-class="{31:'active'}[menu]">olHeatMap(热力图)</li>
+                <li ng-click="changeMenu(32)" ng-class="{32:'active'}[menu]">olMeasure(测量)</li>
+                <li ng-click="changeMenu(33)" ng-class="{33:'active'}[menu]">olPlot(标绘)</li>
+            </ul>
+        </div>
+        <div>
+            <div class="menuItem"><i class="fa fa-caret-down"></i>服务</div>
+            <ul>
+                <li ng-click="changeMenu(41)" ng-class="{41:'active'}[menu]">olData</li>
+                <li ng-click="changeMenu(41)" ng-class="{41:'active'}[menu]">olMapDefaults</li>
+                <li ng-click="changeMenu(41)" ng-class="{41:'active'}[menu]">olHelper</li>
+            </ul>
+        </div>
+    </div>
+    <div class="descText">
+        <div class="head">文字说明</div>
+        <div ng-include="'partials/basic.html'" ng-if="menu==1"></div>
+        <div ng-include="'partials/control.html'" ng-if="menu==11"></div>
+        <div ng-include="'partials/interaction.html'" ng-if="menu==12"></div>
+        <div ng-include="'partials/layer.html'" ng-if="menu==13"></div>
+        <div ng-include="'partials/path.html'" ng-if="menu==21"></div>
+        <div ng-include="'partials/marker.html'" ng-if="menu==22"></div>
+        <div ng-include="'partials/cluster.html'" ng-if="menu==23"></div>
+        <div ng-include="'partials/track.html'" ng-if="menu==24"></div>
+        <div ng-include="'partials/realTrack.html'" ng-if="menu==25"></div>
+        <div ng-include="'partials/nearby.html'" ng-if="menu==26"></div>
+        <div ng-include="'partials/heat.html'" ng-if="menu==31"></div>
+        <div ng-include="'partials/measure.html'" ng-if="menu==32"></div>
+        <div ng-include="'partials/plot.html'" ng-if="menu==33"></div>
+        <div ng-include="'partials/services.html'" ng-if="menu==41"></div>
+    </div>
+    <div class="mapOuter">
+        <openlayers id="map1" width="100%" height="100%" ol-center="olMap.center" ol-defaults="olMap.defaults" ol-view="olMap.view" custom-layers="false">
+            <!--<ol-layer ol-layer-properties="layer" ng-repeat="layer in olMap.map"></ol-layer>-->
+            <ol-layer source-type="XYZ" source-url="http://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}"></ol-layer>
+            <ol-control name="{{ control.name }}" ng-repeat="control in olMap.controls | filter: {active: true}" ol-control-properties="control">
+            </ol-control>
+            <div>
+                <!-- 警务辖区专题 -->
+                <ol-layer ol-layer-properties="mapDemo.regions.layer" on-layer-created="mapDemo.regions.regionLoaded(oSource)" ng-if="mapDemo.regions.visible"></ol-layer>
+                <ol-overlay coord="overlay.coord" label="overlay.label" ng-repeat="overlay in mapDemo.regions.labels" projection="EPSG:3857"></ol-overlay>
+            </div>
+            <!-- 简单绘制点线面 -->
+            <div ng-if="mapDemo.path.visible">
+                <ol-path coords="{{mapDemo.path.point.coords}}" ol-style="mapDemo.path.point.style" type="Point" projection="EPSG:3857"></ol-path>
+                <ol-path coords="{{mapDemo.path.point1.coords}}" ol-style="mapDemo.path.point1.style" type="Point" projection="EPSG:3857" message="测试"></ol-path>
+                <ol-path coords="{{mapDemo.path.line.coords}}" ol-style="mapDemo.path.line.style" type="LineString" projection="EPSG:3857"></ol-path>
+                <ol-path coords="{{mapDemo.path.mulline.coords}}" ol-style="mapDemo.path.mulline.style" type="MultiLineString" projection="EPSG:3857"></ol-path>
+                <ol-path coords="{{mapDemo.path.polygon.coords}}" ol-style="mapDemo.path.polygon.style" projection="EPSG:3857"></ol-path>
+                <ol-path coords="{{mapDemo.path.circle.coords}}" ol-style="mapDemo.path.circle.style" radius="500" type="Circle" projection="EPSG:3857"></ol-path>
+            </div>
+            <div>
+                <ol-marker ol-marker-properties="marker" ng-repeat="marker in mapDemo.markers"></ol-marker>
+            </div>
+            <!--聚集点-->
+            <ol-cluster points="mapDemo.clusterLayer.points" ol-style="mapDemo.clusterLayer.clusterStyle" ng-if="mapDemo.clusterLayer.visible" zindex="5"></ol-cluster>
+            <!-- 轨迹回放 -->
+            <div ng-if="mapDemo.hisTrack.visible">
+                <ol-track cur-index="mapDemo.hisTrack.curIndex" range="mapDemo.hisTrack.range" show-route="mapDemo.hisTrack.toShowLine" points="{{mapDemo.hisTrack.points}}" car-properties="{{mapDemo.hisTrack.car}}" line-properties="{{mapDemo.hisTrack.line}}"></ol-track>
+            </div>
+            <!--实时跟踪-->
+            <ol-realtrack interval="mapDemo.realTrack.interval" line-properties="{{mapDemo.realTrack.line}}" data="mapDemo.realTrack.curPoint" car-properties="{{mapDemo.realTrack.car}}" ng-if="mapDemo.realTrack.visible"></ol-realtrack>
+            <!--热力图-->
+            <ol-heat-map points="mapDemo.heatLayer.points" ng-if="mapDemo.heatLayer.visible"></ol-heat-map>
+            <!--测量-->
+            <ol-measure type="mapDemo.measure.type" ng-if="mapDemo.measure.start"></ol-measure>
+            <!-- 标绘 -->
+            <div class="mapDraw">
+                <ol-plot type="mapDemo.plot40l3.type" icon="{{mapDemo.plot40l3.img}}" is-edit="mapDemo.plot40l3.edit" draw-end="mapDemo.plot40l3.drawEnd(feature)" ng-if="mapDemo.plot40l3.start"></ol-plot>
+            </div>
+            <!-- 周边资源中的代表周边距离的circle -->
+            <ol-nearby coords="mapDemo.nearby.coords" radius="mapDemo.nearby.radius" type="Circle" refresh-data="mapDemo.nearby.returnFunc()" projection="EPSG:3857" ng-if="mapDemo.nearby.visible">
+            </ol-nearby>
+        </openlayers>
+    </div>
+    <script>
+        var app = angular.module("demo", ['openlayers-directive', 'ui.colorpicker']);
+
+    </script>
+
+    <script src="script/appCtrl.js"></script>
+    <script src="script/layerCtrl.js"></script>
+    <script src="script/pathCtrl.js"></script>
+    <script src="script/markerCtrl.js"></script>
+    <script src="script/clusterCtrl.js"></script>
+    <script src="script/trackCtrl.js"></script>
+    <script src="script/realTrack.js"></script>
+    <script src="script/nearbyCtrl.js"></script>
+    <script src="script/heatCtrl.js"></script>
+    <script src="script/measureCtrl.js"></script>
+    <script src="script/plotCtrl.js"></script>
+</body>
+
+</html>

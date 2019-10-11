@@ -1,0 +1,178 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+<title>Preload Ready</title>
+<style>
+    .voice-read{
+	border-top: 1px solid #dbdbdb;
+	margin-top: 15px;
+	
+	height: 65px;
+	
+	width: 100px;
+}
+
+audio{
+	width: 270px;
+}
+
+
+.flex-start{
+	justify-content: flex-start !important;
+}
+
+
+.fake-control{
+	position: relative;
+	top: 4px;
+	width: 100%;
+}
+
+.fake-control-timeline{
+	float: left;
+}
+
+.play-icon{
+  font-size:14px;
+}
+
+.voice-title{
+	margin-right: 15px;
+	float: left;
+	font-size: 13px;
+}
+
+.voice-container{
+	float: left;
+	width: 250px;
+  margin:20px;
+}
+
+.timeline{
+	height: 4px;
+  width: 100px;
+  background-color: #D8D8D8;
+  
+  margin-right: 15px;
+  position: relative;
+  top: -3px;
+}
+
+.play-time{
+	/* margin-right: 33px; */
+	font-size: 12px;
+}
+
+.playhead{
+	background-color: #49a9ee;
+	width: 13px;
+	height: 13px;
+	border-radius: 50px;
+	position: relative;
+	top: -4px;
+}
+
+.voice-control{
+	position: relative;
+	top: -2px;
+	
+	float: right;
+}
+
+.voice-read-outside{
+	width: 100%;
+}
+
+
+.clearfix:before,
+.clearfix:after{ 
+    content:""; 
+    display:table; 
+} 
+.clearfix:after{clear:both;} 
+.clearfix{
+    clear: both;
+}
+
+.inline-block{
+	display: inline-block;
+}
+
+.float-right{
+	float: right;
+}
+.float-left{
+	float: left;
+}
+
+.height-0{
+	height: 0;
+}
+
+/**
+ * 居中
+ */
+
+
+
+
+.center-father-style{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+	
+}
+
+.center-father-style-align{
+	display: flex;
+	align-items: center;
+}
+
+.center-father-style-justify{
+	display: flex;
+	justify-content: center;
+}
+
+.direction-row-reverse{
+	flex-direction :row-reverse;
+}
+
+
+.font-style{
+  font-size:13px;
+  padding:10px 10px 0  10px;
+  
+}
+</style>
+<script src="https://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+    var audio = document.createElement("audio");
+audio.src = "http://172.16.2.73:8080/AttachmentTool/minstone/attachment/downloadFile?id=de6523f843f94eeeadfe33232bbe8bae&tenantCode=GDSXXZX";
+$("#box").append(audio);
+audio.addEventListener("canplaythrough",
+function() {
+	alert('音频文件已经准备好，随时待命');
+},
+false);
+function aPlay() {
+	audio.play();
+}
+function go() {
+	audio.currentTime += 10;
+	audio.play();
+}
+function back() {
+	audio.currentTime -= 10;
+	audio.play();;
+}
+};
+    </script>
+</head>
+<body id="box">
+<input type="button" onclick="aPlay();" value="播放音频">
+<input type="button" onclick="go();" value="快进10秒">
+<input type="button" onclick="back();" value="快退10秒">
+</body>
+</html>

@@ -1,0 +1,232 @@
+.sc-calendar {
+  width: 500px;
+  height: 500px;
+  text-align: center;
+  font-family: "Microsoft Yahei";
+  color: #4A4A4A;
+  box-shadow: 2px 4px 5px #bdbdbd;
+  border-width: 1px 0px 6px 0px;
+  border-color: #E6E4E0;
+  border-style: solid;
+  float: left;
+  -moz-user-select: none;
+  /*火狐*/
+  -webkit-user-select: none;
+  /*webkit浏览器*/
+  -ms-user-select: none;
+  /*IE10*/
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  font-size: 16px;
+}
+
+.sc-header {
+  height: 35px;
+  border-bottom: 0;
+  background-color: #f1f0f0;
+}
+.sc-body {
+  height: 93%;
+  clear: both;
+}
+.sc-week {
+  height: 12%;
+  font-weight: 400;
+  font-size: 20px;
+  color: #4A4A4A;
+}
+.sc-days {
+  height: 88%;
+}
+.sc-item {
+  height: 16.667%;
+  float: left;
+  font-weight: 600;
+  color: #565555;
+  width: 14.285%;
+  padding-top: 15px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.item-nolunar {
+  padding-top: 20px;
+}
+.sc-item:nth-child(7n) .day, .sc-item:nth-child(7n+6) .day {
+  color: rgba(224, 8, 8, 0.74);
+}
+.sc-vocation {
+  background-color: #FFEBEC;
+}
+.sc-blue{
+  background-color: #B8D3FF !important;
+}
+.sc-gray{
+  background-color: #e8e8e8 !important;
+}
+.sc-white{
+  background-color: #fff !important;
+}
+.sc-vocation:before {
+  content: '休';
+  display: block;
+  position: absolute;
+  font-size: 0.7em;
+  width: 1.2em;
+  font-weight: 100;
+  color: white;
+  background-color: #E00808;
+  margin-top: -10px;
+}
+.sc-othermenth {
+  color: #C1C0C0 !important;
+}
+.sc-othermenth .day, .sc-othermenth .lunar-day {
+  color: #C1C0C0 !important;
+}
+/*, .sc-selected*/
+.sc-active-day {
+  border: 1px solid orange;
+}
+.sc-today {
+  border: 3px solid rgb(73, 129, 218);
+  color: black;
+}
+.sc-item .day {
+  font-size: 1.5em;
+}
+.sc-today .day {
+  color: black !important;
+}
+.sc-item .lunar-day {
+  font-size: 10px;
+  font-weight: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sc-festival .lunar-day {
+  color: #E00808;
+}
+
+/*.sc-item:last-child, .sc-item:nth-child(7n) {
+  border-width: 0 1px 1px 1px;
+}*/
+
+.sc-week-item {
+  height: 100%;
+  padding-top: 2%;
+  float: left;
+  width: 14.285%;
+  background-color: #F0F9FD;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sc-item-small{
+  font-size: 10px !important;
+}
+.sc-week-item:last-child {
+  border-width: 1px 1px 1px 1px;
+}
+.sc-week-item:nth-child(7n), .sc-week-item:nth-child(7n+6) {
+  color: rgba(224, 8, 8, 0.74)!important;
+}
+.sc-actions {
+  float: left;
+  width: 25%;
+  padding: 5px;
+  height: 100%;
+  box-sizing: border-box;
+}
+.sc-actions:last-child {
+  float: right;
+}
+.sc-actions-big{
+  width: 50%;
+}
+@media screen and (max-width : 500px){
+.sc-actions{
+  width: 50%;
+}
+}
+.sc-header select {
+  text-align: center;
+  text-align-last: center;
+  border-color: rgba(0, 0, 0, 0);
+  padding: 0.2em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Microsoft Yahei";
+  color: #606060;
+  font-size: 13px ;
+}
+.sc-header input {
+  border-color: rgba(0, 0, 0, 0);
+  padding: 0.2em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  font-family: "Microsoft Yahei";
+  color: #606060;
+}
+.sc-actions div {
+  display: inline-block;
+  vertical-align: middle;
+  width: 20px;
+  padding-bottom: 5px;
+  font-size: 1.5em;
+  line-height: 0.9em;
+}
+.sc-return-today {
+  display: block;
+  background-color: #F5F5F9;
+  border-radius: 2px;
+  /* border: 1px solid #ccc; */
+  width: 60px;
+  font-size: 0.8em;
+  padding: 0.3em;
+  margin: auto;
+}
+
+.sc-time {
+  display: block;
+  margin-top: 3px;
+  font-size: 0.8em;
+}
+.mainCon {
+  display: none !important;
+}
+.sc-select-year {
+  display: inline-block !important;
+}
+.sc-select-month {
+  display: inline-block !important;
+}
+#tip {
+  position:relative;
+}
+#tips{
+  display: inline-block;
+  position: absolute;
+  width: 450px;
+  left: 50%;
+  top: 0px;
+  margin-left: -225px;
+}
+.tipsItem{
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+}
+#tips > ul > li > div.item-color{
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+#tips > ul > li > div.item-text{
+  display: inline-block;
+  height: 30px;
+  vertical-align:top;
+  line-height:30px;
+}

@@ -1,0 +1,15 @@
+<div ng-controller="markerCtrl">
+    <p>olMarker是单个点对象。虽然olPath也可以加载点，但是olMarker功能比较多，是一个微交互单元</p>
+    <p>你可以给他不同的<strong>style</strong>，比如image.icon就表现为一个图标，image.circle就表现为一个纯色的点，也可以加上text样式，这样会在图标或者点上显示字符</p>
+    <p>使用text样式的时候注意加上zIndex属性，这样text就不会总在最上层，点对象之间才能相互覆盖</p>
+    <p>olmarker最重要的属性就是弹框：<strong>overLabel、clickLabel、label</strong>；这些是已经在指令里封装好的交互单元。若有overLabel属性则鼠标悬浮在该点对象上时显示该弹框；若有clickLabel属性则鼠标点击该点对象上时显示该弹框；若有label属性，则该弹框一直显示；元素ol-overlay-container左上角的位置是在点对象的经纬度坐标转换成的屏幕坐标处。所以我们一般都会根据弹框的宽高在css中调整弹框的位置</p>
+    <p>
+        弹框的内容是由label的message或者url属性决定的。若弹框内容比较简单，则使用message属性，将元素对象拼凑赋给message即可；若弹框内容比较复杂，则可以写成html文件，将路径赋给url。弹框的位置可由label的placement属性决定【"top","right","left","bottom"】。overLabel、clickLabel还有classNm，title，id属性。不同的弹框样式不同，所以给弹框最外层元素一个class，便于调整样式,id是为了给overlay一个独一无二的属性，便于识别overlay这个对象，title是标题栏内容
+    </p>
+    <p>
+        这三种弹框，当你不想要某一种时，可以不设置该属性
+    </p>
+    <p>
+        <strong>info</strong>属性是为了携带额外的信息的。这样当弹框中需要这些信息的时候就不用再向后台发送一次请求了
+    </p>
+</div>

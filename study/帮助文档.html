@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>帮助文档</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body{
+        width: 1000px;
+        margin: auto;
+    }
+    h1{
+        margin: 10px auto 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .media{
+        line-height: 35px;
+        margin: 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ccc;
+    }
+    .media .fa{
+        color: #269abc;
+        font-size: 20px;
+    }
+    .media-heading{
+        font-size: 18px;
+        font-weight: bold
+    }
+    .media li{
+        cursor: pointer;
+        list-style: none;
+    }
+    .media-heading2{
+        font-weight: bold;
+        font-size: 16;
+    }
+    .media-left{
+        float: left;
+        position: relative;
+    }
+    .media-left .fa{
+        position: relative;
+        top: 7px;
+    }
+    .media-body>.se{
+        width: 100%;
+    }
+    .se .se{
+        float: left;
+        padding: 0;
+        width: 25%;
+        height: 200px;
+    }
+    .se li{
+        color: #269abc;
+    }
+    </style>
+</head>
+<body id ="body" class="pace-done">
+    <div>
+        <h1>帮助文档</h1>
+        <div class="search-form">
+            <div class="input-group" style="margin-bottom: 20px;">
+            <input id="key-word" type="text" class="form-control" placeholder="请输入搜素关键字">
+            <span class="input-group-btn">
+                <button id="search" class="btn btn-info" type="button">搜索</butto>
+            </span>
+            </div>
+        </div>
+        <div id="menu-list">
+            <!-- <div class="media">
+                <div class="media-left">
+                    <i class="fa fa-bookmark-o"></i>
+                </div>
+                <div class="media-body">
+                    <div class="media-heading">基础数据</div>
+                    <ul>
+                        <div class="media-heading2">基建情况</div>
+                        <li>待办事项</li>
+                        <li>已办事项</li>
+                        <li>代理人管理</li>
+                    </ul>
+                </div>
+            </div> -->
+        </div>
+    </div>
+<script>
+    $(function(){
+        var menuList = [
+            {
+                title:"基础数据",
+                icon:"fa-database",
+                active:true,
+                children:[
+                    {
+                        title:"基建情况",
+                        active:true,
+                        children:[
+                            {
+                                title:"项目基本情况",
+                                url:"/ediis/static/downloadFile/xmjbqk.jsp",
+                                active:true
+                            },
+                            {
+                                title:"建设负债情况",
+                                url:"/ediis/static/downloadFile/jsfzqk.jsp",
+                                active:true
+                            },
+                            {
+                                title:"工程超概算情况",
+                                url:"/ediis/static/downloadFile/gccgsqk.jsp",
+                                active:true
+                            },
+                            {
+                                title:"维修工程项目",
+                                url:"/ediis/static/downloadFile/wxgcxm.jsp",
+                                active:true
+                            }
+                        ]
+                    },
+                    {
+                        title:"理财投资",
+                        active:true,
+                        children:[
+                            {
+                                title:"对外投资情况",
+                                url:"/ediis/static/downloadFile/dwtzqk.jsp",
+                                active:true
+                            },
+                            {
+                                title:"理财投资情况",
+                                url:"/ediis/static/downloadFile/lctzqk.jsp",
+                                active:true
+                            }
+                        ]
+                    },
+                    {
+                        title:"采购管理",
+                        active:true,
+                        children:[
+                            {
+                                title:"大宗采购情况表",
+                                url:"/ediis/static/downloadFile/dzcgqk.jsp",
+                                active:true
+                            }
+                        ]
+                    },
+                    {
+                        title:"合作办学",
+                        active:true,
+                        children:[
+                            {
+                                title:"培训交流类",
+                                url:"/ediis/static/downloadFile/pxjl.jsp",
+                                active:true
+                            },
+                            {
+                                title:"学制式教学类",
+                                url:"/ediis/static/downloadFile/xzsjx.jsp",
+                                active:true
+                            },
+                        ]
+                    },
+                    {
+                        title:"资产管理情况",
+                        active:true,
+                        children:[
+                            {
+                                title:"资产出租出借",
+                                url:"/ediis/static/downloadFile/zcczcj.jsp",
+                                active:true
+                            },
+                            {
+                                title:"单位房屋建筑",
+                                url:"/ediis/static/downloadFile/dwfwjz.jsp",
+                                active:true
+                            },
+                            {
+                                title:"单位土地使用",
+                                url:"/ediis/static/downloadFile/dwtdsy.jsp",
+                                active:true
+                            },
+                        ]
+                    },
+                    {
+                        title:"专项资金",
+                        active:true,
+                        children:[
+                            {
+                                title:"创新强校工程",
+                                url:"/ediis/static/downloadFile/cxqxgc.jsp",
+                                active:true
+                            }
+                        ]
+                    },
+                    {
+                        title:"三公经费情况",
+                        active:true,
+                        children:[
+                            {
+                                title:"庆典会议",
+                                url:"/ediis/static/downloadFile/qdhy.jsp",
+                                active:true
+                            },
+                            {
+                                title:"大额接待费用",
+                                url:"/ediis/static/downloadFile/dejdfy.jsp",
+                                active:true
+                            },
+                            {
+                                title:"因公出国（境）",
+                                url:"/ediis/static/downloadFile/ygcg.jsp",
+                                active:true
+                            }
+                        ]
+                    }
+                ],
+            },
+            {
+                title:"情况调查表",
+                icon:"fa-table",
+                active:true,
+                children:[
+                    {
+                        title:"地市内部审计表",
+                        url:"/ediis/static/downloadFile/dfnbsjbmkczsm.jsp",
+                        active:true,
+                    },
+                    {
+                        title:"地级审计调查表",
+                        url:"/ediis/static/downloadFile/djsjdcbmkczsm.jsp",
+                        active:true,
+                    },
+                    {
+                        title:"县教育局审计表",
+                        url:"/ediis/static/downloadFile/xjyjsjbmkczsm.jsp",
+                        active:true,
+                    },
+                    {
+                        title:"高校审计调查表",
+                        url:"/ediis/static/downloadFile/gxsjdcbmkczsm.jsp",
+                        active:true,
+                    },
+                    {
+                        title:"高校内部审计表",
+                        url:"/ediis/static/downloadFile/gxnbsjbmkczsm.jsp",
+                        active:true,
+                    }
+                ],
+            },
+        ];
+
+        $("#key-word").keydown(function() {
+             if (event.keyCode == "13") {//keyCode=13是回车键
+                 $('#search').click();
+             }
+         });
+
+        $("#search").click(function() {
+            updatMenu();
+        });
+        
+        //加载菜单
+        function updatMenu() {
+            searchMenu();
+            var keyWord = $("#key-word").val();;
+            var reg = new RegExp(keyWord);
+            var strHtml = "";
+            $.each(menuList, function(index, item){
+                if(item.active){
+                    strHtml += '<div class="media">'+
+                                '<div class="media-left">'+
+                                    '<i class="fa '+item.icon+'"></i>'+
+                                '</div>'+
+                                '<div class="media-body">'+
+                                    '<div class="media-heading">'+item.title+'</div>'+
+                                    '<ul class="se">'
+                                      
+                                $.each(item.children, function(jndex,i){
+                                    if(i.active && i.url){
+                                        strHtml +=  '<li data-url="'+ i.url +'">'+i.title+'</li>';
+                                    }else if(i.children){
+                                        if(i.active){
+                                            strHtml += '<ul class="se"><div class="media-heading2">'+ i.title +'</div>'
+                                        }
+                                        $.each(i.children, function(kndex,k){
+                                            if(k.active){
+                                                strHtml +=  '<li data-url="'+ k.url +'">'+k.title+'</li>';
+                                            }
+                                            
+                                        })
+                                        strHtml += '</ul>'
+                                    }
+                                });
+                    strHtml += '</ul>'+
+                                '</div>'+
+                                '</div>'
+                }
+            })
+            $("#menu-list").html(strHtml);
+            $("#menu-list li").click(function(){
+                var url = $(this).attr("data-url");
+                window.open(url);
+            })
+            // $.each($(".media-heading2"), function(index, item){
+            //     if( !($(item).text().match(reg)) ){
+            //         $(item).hide();
+            //     }
+            // })
+            $.each($(".se .se"), function(index, item){
+                if($(item).find("li").length == 0){
+                    $(item).hide();
+                }
+            })
+            $.each($(".media>.media-body>.se"), function(index, item){
+                if($(item).find("li").length == 0){
+                    $(item).parent().parent().hide();
+                }
+            })
+        }
+
+        //匹配菜单
+        function searchMenu() {
+            var keyWord = $("#key-word").val();;
+            var reg = new RegExp(keyWord);
+            $.each(menuList, function(index, item){
+                item.active = true;
+                $.each(item.children, function(jndex,i){
+                    i.active = true;
+                    if(i.url){
+                        if( !(i.title.match(reg)) ){
+                            i.active = false;
+                        }
+                    }else if(i.children){
+                        $.each(i.children, function(kndex,k){
+                            k.active = true;
+                            if( !(k.title.match(reg)) ){
+                                k.active = false;
+                            }
+                        })
+                    }
+                    
+                })
+            })
+
+            $.each(menuList, function(index, item){
+                if(item.children){
+                    item.active = updatePraent(item);
+                }
+
+
+            })
+            // console.log(updatePraent(menuList[0].children[0]));
+            // menuList[0].children[0].active = false;
+            // console.log(menuList[0].children[0]);
+        }
+
+        // // console.log(menuList[0].children[0]);
+        // console.log(updatePraent(menuList[0].children[0]));
+        // menuList[0].children[0].active = false;
+        // console.log(menuList[0].children[0]);
+
+        function updatePraent(arr){
+            var result = arr.children.some(function(item){
+                return item.active == true;
+            });
+            return result;
+        }
+
+
+        updatMenu();
+        
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Document</title>
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<style>
+</style>
+</head>
+<body>
+<div style="display:inline-block;text-align: center;position: relative;padding-right: 5px;">
+    <span id="show" style="z-index: 2;position: absolute;top: 0;left: 0;display: inline-block;width: 100%;font-size: 14px;">No-1</span><i class="fa fa-caret-down" style="position: absolute;top: 2px;bottom:0;right:0;margin:auto;" aria-hidden="true"></i>
+    <select style="position: relative;z-index: 2;height: 100%;opacity: 0;font-size: 14px;">
+        <option value="1">No-1</option>
+        <option value="2">No-2-我的内容很多哦。哈哈</option>
+    </select>
+</div>
+<script>
+    window.onload=function(){
+    var show=document.getElementById('show');
+    var sel=document.getElementsByTagName('select')[0];
+    sel.onchange=function(){
+        var index=sel.selectedIndex; //序号，取当前选中选项的序号
+        show.innerText=sel.options[index].text;
+    }
+}
+</script>
+</body>
+</html>

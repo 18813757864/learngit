@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="jquery-eselect/css/eselect.css">
+    <script src="jquery.js"></script>
+    <script src="jquery-eselect/js/jquery.eselect.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" style="display:none;" name="enclosureList" autocomplete="off" class="eselect-input"/>
+    <script>
+         $('[name=enclosureList]').eselect({
+                placeholder: '请选择当前状态',
+                width: 240,
+                doNotLoadUntilOpen: true,
+                options: [
+                    {value: '0', key: '全部'},
+                    {value: AUDITPARAM_PUB, key: '已发布'},
+                    // {value: AUDITPARAM_REVIEWING, key: '审核中'},
+                    {value: AUDITPARAM_PASS, key: '审核通过未发布'},
+                    {value: AUDITPARAM_FAIL, key: '审核不通过'},
+                    {value: AUDITPARAM_DRAFT, key: '草稿'},
+                    // {value: AUDITPARAM_DEL, key: '已删除', hidden: true}
+                ],
+                onChange: function (val, option) {
+                    loadJqGrid(val);
+                }
+            });
+            $('[name=enclosureList]').val('0');
+            $('[name=enclosureList]').eselect('val','0');
+    </script>
+</body>
+</html>

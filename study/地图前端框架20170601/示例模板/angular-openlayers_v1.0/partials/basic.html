@@ -1,0 +1,16 @@
+<div>
+    <p>基于 <strong>openlayers4</strong> 封装的组件。该组件封装了一些常用的微交互单元。但实际开发过程中，可能会出现各种各样的交互，所以要想用好地图，openlayers的官网API也是要会的</p>
+    <p>基础功能涉及到的指令有 <strong>openlayers, olCenter, olControl, olView, olInteraction</strong> </p>
+    <div class="codeOuter" ng-bind="myCode"></div>
+    <p>
+        <strong>openlayers</strong> 是整个框架的最基础的指令。 <strong>olCenter, olView</strong> 都是作为元素openlayers的属性存在的。
+    </p>
+    <p>
+        olCenter设置地图中心坐标以及缩放等级。olView设置maxZoom，minZoom, rotation。olDefaults可以设置简单的交互动作与控件，这个属性和服务olMapDefaults关系很大。customLayers这个属性若不设置就会加载默认的底图。
+    </p>
+    <p>
+        若想要监控地图事件，需要在ol-defaults中配置events。并接受消息：
+        <div><strong>$scope.$on("openlayers.map.singleclick", function (e, data) {}</strong></div>
+        <div><strong>$scope.$on("openlayers.map.pointermove", function (e, data) {}</strong></div>
+    </p>
+</div>

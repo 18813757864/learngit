@@ -1,0 +1,192 @@
+body,
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+    overflow: hidden;
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+li {
+    list-style: none;
+}
+
+.menu {
+    float: left;
+    width: 160px;
+    height: 100%;
+    background: #2C3E50;
+    font-family: "Helvetica Neue", "Luxi Sans", "DejaVu Sans", Tahoma, "Hiragino Sans GB", STHeiti, "Microsoft YaHei";
+}
+
+.menu>div {
+    cursor: pointer;
+    color: #fff;
+}
+
+.menuItem {
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+.menuItem:hover {
+    background: #414a56;
+}
+
+.menuItem>i {
+    margin-right: 4px;
+}
+
+.menu>div ul {
+    line-height: 35px;
+    background: #253544;
+    margin: 0px;
+}
+
+.menu>div li {
+    padding-left: 20px;
+}
+
+.menu>div li:hover {
+    background: #414a56;
+}
+
+.menu>div li.active {
+    background: #3B8CFF;
+}
+
+.descText {
+    float: left;
+    width: 350px;
+    height: 100%;
+    border: 1px solid #ddd;
+    padding: 5px;
+    overflow: auto;
+}
+
+.descText .head {
+    line-height: 30px;
+    padding-left: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    color: #666;
+}
+
+.mapOuter {
+    float: left;
+    width: calc(100% - 510px);
+    height: 100%;
+}
+
+.codeOuter {
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.posInfoLay .popover {
+    border-radius: 0px;
+    left: -207px;
+    top: -322px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.35);
+    border: 0px;
+}
+
+.markerClk .popover {
+    left: -67px;
+    top: -47px;
+}
+
+.pointClk .popover {
+    top: -23px;
+}
+
+.ol-overlay-container .popover-title {
+    height: 45px;
+    line-height: 45px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #2058a5;
+    border-radius: 0px;
+    padding: 0px;
+    padding-left: 10px;
+}
+
+.addrLay_pos {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #F6F6F6;
+    overflow: hidden;
+}
+
+.addrLay_pos li {
+    margin: 10px 0;
+}
+
+.addrLay_pos i {
+    color: #4588FE;
+    font-size: 20px;
+}
+
+.addrLay_btn li {
+    float: left;
+    padding: 5px 20px 12px;
+}
+
+.addrLay_btn li a,
+.caseLay_btn li a {
+    color: #4588FE;
+    font-weight: bold;
+}
+
+.addrLay_btn a img {
+    margin-right: 5px;
+    margin-top: -4px;
+}
+
+.closeOverlay {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    cursor: pointer;
+}
+
+.closeOverlay i {
+    float: left;
+    font-size: 16px;
+    color: #0c3771;
+    font-weight: bold;
+}
+
+.closeOverlay i:hover {
+    color: #fff;
+}
+
+.plotOptions ul {
+    padding: 0px 5px;
+    overflow: hidden;
+}
+
+.plotOptions li {
+    float: left;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.plotOptions li>img {
+    cursor: pointer;
+}
+
+.plotOptions li.selected {
+    background-color: RGBA(32, 88, 165, 0.15);
+}

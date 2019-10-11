@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script src="js/jquery.js"></script>
+<script>
+    $(function(){
+
+        function getUrlParam(name, target) {
+			var reg = new RegExp("(^|,)" + name + "=([^&]*)(,|$)", "i");
+			var r = target.substr(1).match(reg);
+                if (r != null) return r[2];
+        }
+
+        var json={
+            "JJ": {
+                "level1": 57,
+                "level3": 28,
+                "level2": 5
+            },
+            "WX": {
+                "level1": 53,
+                "level3": 50,
+                "level2": 19
+            },
+            "sbValue": [
+                "{level1=57, level2=5}",
+                "{level1=1, level3=20, level2=24}",
+                "{level1=211}, level3=20,",
+            ],
+            "CW": {
+                "level1": 15
+            },
+            "SG": {
+                "level1": 85
+            },
+            "CJ": {
+                "level1": 1,
+                "level3": 20,
+                "level2": 24
+            },
+            "ZCGL": {
+                "level1": 211
+            },
+            "ZC": {
+                "level1": 211
+            },
+            "sbName": [
+                "基建",
+                "采购",
+                "资产",
+            ],
+            "JX": {
+                "level1": 201
+            },
+            "ZX": {
+                "level1": 33
+            }
+        };
+
+        var bbb = [['product', '轻微', '一般', '严重']];
+        $.each(json.sbName, function(index, item){
+            bbb.push([item]);
+        });
+        $.each(json.sbValue, function(index, str){
+            str = str.replace(/\s*/g,"")
+            str = str.replace(/{*/g,"")
+            str = str.replace(/}*/g,"")
+            var strArr = str.split(',')
+            var lvArr = ['0','0','0'];
+            $.each(strArr, function(i, item){
+                if(item.indexOf('level1') == 0){
+                    lvArr[0] = item.substring(7,item.length);
+                }else if(item.indexOf('level2') == 0){
+                    lvArr[1] = item.substring(7,item.length);
+                }else if(item.indexOf('level3') == 0){
+                    lvArr[2] = item.substring(7,item.length);
+                }
+            })
+            console.log(lvArr)
+            $.each(lvArr, function(i, item){
+                bbb[index+1].push(item);   
+            })
+        });
+
+            console.log(json)
+            console.log(bbb)
+            var data = bbb;
+            var dataArr = []
+            $.each(data,function(index,item){
+                if(index>0){
+                    dataArr.push({
+                        name:item[0],
+                        num:item[1]*1+item[2]*1+item[3]*1
+                    });
+                }
+            })
+            function compare(property){
+                return function(a,b){
+                    var value1 = a[property];
+                    var value2 = b[property];
+                    return value1 - value2;
+                }
+            }
+            console.log(dataArr.sort(compare('num')).reverse())
+
+    });
+</script>
+</body>
+</html>

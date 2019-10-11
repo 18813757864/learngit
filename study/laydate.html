@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>layui在线调试</title>
+  <link rel="stylesheet" href="layui/layui.css" media="all">
+  <style>
+    body{margin: 10px;}
+    .demo-carousel{height: 200px; line-height: 200px; text-align: center;}
+  </style>
+</head>
+<body>
+ 
+<div class="layui-tab layui-tab-brief" lay-filter="demo">
+    <input class="rubik-input laydate-input" autocomplete="off" type="text" name="endModifyDate" placeholder="选择下线时间"/>
+    <input class="rubik-input laydate-input" autocomplete="off" type="text" name="startModifyDate" placeholder="选择发布时间"/>
+  </div>
+</div>
+  
+<script src="layui/layui.js"></script>
+<script src="layui/laydate.js"></script>
+<script src="js/jquery.js"></script>
+<script>
+layui.config({
+  version: '1545041465443' //为了更新 js 缓存，可忽略
+});
+ 
+layui.use(['laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 'element', 'slider'], function(){
+  var laydate = layui.laydate //日期
+  ,laypage = layui.laypage //分页
+  ,layer = layui.layer //弹层
+  ,table = layui.table //表格
+  ,carousel = layui.carousel //轮播
+  ,upload = layui.upload //上传
+  ,element = layui.element //元素操作
+  ,slider = layui.slider //滑块
+  
+  //向世界问个好
+  layer.msg('Hello World');
+  
+  var startDate = laydate.render({
+        elem: '[name=startModifyDate]',
+        type: 'datetime',
+        format: 'yyyy-MM-dd HH:00:00',
+        min: new Date().getTime(),
+        // btns: ['confirm'],
+        max: '2099-12-31 24:59:59',
+        btns: ['clear', 'confirm'],
+        trigger: 'click',
+        done: function (val, dates) {
+            if (val) {
+                var timeObj = {
+                    year: dates.year,
+                    month: dates.month - 1, //关键  
+                    date: dates.date,
+                    hours: dates.hours,
+                    minutes: dates.minutes,
+                    seconds: dates.seconds
+                }
+                endDate.config.min = timeObj;
+            }else{
+                endDate.config.min = {
+                    year: '1900',
+                    month: '00', //关键  
+                    date: '01',
+                    hours: '',
+                    minutes: '',
+                    seconds: ''
+                }
+            }
+            
+            if( $('[name=startModifyDate]').val() != '' && $('[name=endModifyDate]').val() != ''  ){
+                if( new Date($('[name=startModifyDate]').val().replace("-", "/")) > new Date($('[name=endModifyDate]').val().replace("-", "/"))){
+                    $('[name=startModifyDate]').val('')
+                    operationTipWarn('发布时间不得大于下线时间')
+                    return false;
+                }
+            }
+            
+            // vue.startDate = val;
+        }
+    })
+    var endDate = laydate.render({
+        elem: '[name=endModifyDate]',
+        type: 'datetime',
+        min: new Date().getTime(),
+        // btns: ['confirm'],
+        format: 'yyyy-MM-dd HH:00:00',
+        btns: ['clear', 'confirm'],
+        trigger: 'click',
+        done: function (val, dates) {
+            if (dates) {
+                startDate.config.max = {
+                    year: dates.year,
+                    month: dates.month - 1,//关键   
+                    date: dates.date,
+                    hours: dates.hours,
+                    minutes: dates.minutes,
+                    seconds: dates.seconds
+                }
+            } else{
+                startDate.config.max = {
+                    year: '2099',
+                    month: '11',//关键   
+                    date: '31',
+                    hours: '',
+                    minutes: '',
+                    seconds: ''
+                } 
+            }
+            if( $('[name=startModifyDate]').val() != '' && $('[name=endModifyDate]').val() != '' ){
+                if( new Date($('[name=startModifyDate]').val().replace("-", "/")) > new Date($('[name=endModifyDate]').val().replace("-", "/"))){
+                    operationTipWarn('下线时间不得小于发布时间');
+                    $('[name=endModifyDate]').val('')
+                    return false;
+                }
+            }
+            
+            // vue.endDate = val;
+        }
+    })
+
+});
+</script>
+</body>
+</html>        
+        

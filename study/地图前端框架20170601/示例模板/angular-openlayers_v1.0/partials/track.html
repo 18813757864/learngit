@@ -1,0 +1,33 @@
+<div ng-controller="trackCtrl">
+    <p>轨迹回放</p>
+    <p>
+        轨迹回放要考虑的条件比较多：路线是刚开始就显示呢，还是随着车辆的前进而一点点显示呢？或者不想让车一点点前进，想要直接跳到某个节点呢？
+    </p>
+    <p>
+        线的样式？车的样式？
+    </p>
+    <div class="codeOuter" ng-bind="myCode"></div>
+    <p>
+        属性<strong>points</strong>绑定数组，数组中的单个对象配置同olMarker，只不过比olMarker多了timestamp和direction两个字段，即当前节点的时间戳和行驶方向（角度）。时间戳是为了简单判断该段路线是否合理。
+        <div>属性<strong>curIndex</strong>是用来控制车辆的位置以及绘制[curIndex-1,curIndex]这段路线和curIndex节点。所以只需在controller中写个定时器，对curIndex进行递增操作，车辆就会在地图上动起来了。</div>
+        <div>属性<strong>range</strong>绑定数组，可以用来控制路线的绘制段数，比如[0,3]就会绘制前三段路线。</div>
+        <div>属性<strong>showRoute</strong>绑定布尔变量，控制全部路线的显示隐藏。和range的功能有所重复</div>
+        <div>属性<strong>carProperties</strong>的配置同olMarker，是指轨迹回放主体【一般是车辆】</div>
+        <div>属性<strong>lineProperties</strong>指定路线的样式，也可以采用默认样式</div>
+    </p>
+    <pre>
+&lt;div&gt;
+    &lt;ol-marker ol-marker-properties="trackPoint" ng-click="trackPoint.clickFunc()" ng-repeat="trackPoint in carTrack.trackPoints"&gt;&lt;/ol-marker&gt;
+    &lt;ol-path coords="{{trackLine.coords}}" ol-style="trackLine.style" type="LineString" ng-repeat="trackLine in carTrack.trackLines"&gt;&lt;/ol-path&gt;
+    &lt;ol-marker ol-marker-properties="carTrack.car" ng-click="carTrack.car.clickFunc()"&gt;&lt;/ol-marker&gt;
+    &lt;ol-path coords="{{carTrack.route.coords}}" ol-style="carTrack.route.style" type="MultiLineString" ng-if="showRoute"&gt;&lt;/ol-path&gt;
+&lt;/div&gt;
+    </pre>
+    <p>
+        轨迹回放的构成：车辆、行驶路线、节点； 车辆和节点都是olMarker，所以配置的时候可以按照olMarker来配置，区别在于timestamp和direction，即当前节点的时间戳和行驶方向（角度）。时间戳是为了简单判断该段路线是否合理。
+        <div>行驶路线是olPath，配置的时候按照LineString的olPath来配置</div>
+    </p>
+    <p>
+        这个指令不够灵活，交互比较复杂的时候可以考虑自由组合olMarker，olPath等。
+    </p>
+</div>

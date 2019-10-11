@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用餐反馈</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.min.css">
+    <link rel="stylesheet" href="css/mdskin-blue.css">
+    <link rel="stylesheet" href="css/skin-sg.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/bookMeals.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="layui-v2.4.5/layui/layui.js"></script>
+    <script src="js/grid.locale-cn.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <style>
+    </style>
+</head>
+<body id ="body" class="mdskin">
+    <div class="book-meals">
+        <div class="">
+            <div class="query-group">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>选定年月:</label>
+                        <input type="text" readonly id="starTime" class="layui-input" >
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-base btn-active search-btn"><i class="fa fa-search"></i>&nbsp;查询</button>
+                        <button class="btn btn-base reset-btn"><i class="fa fa-refresh"></i>&nbsp;重置</button>
+                    </div>
+                    <div class="form-group f-r">
+                        <button class="btn btn-base btn-active" id="add"><i class="fa fa-plus"></i>&nbsp;新增</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 表格一 所有 -->
+            <div class="south clearfix jqGrid_wrapper top">
+                <!-- 表格及分页 START -->
+                <table id="grid"></table>
+                <div id="pager" class="pager"></div>
+                <!-- 表格及分页 END -->
+            </div>
+        </div>
+    </div>
+
+     <!-- 新增反馈的模态框= -->
+     <div id="add-box" class="add-box" style="display: none;">
+        <div class="query-group">
+            <div class="form-inline">
+                <div class="form-group">
+                    <span class="form-txt">反馈类似:</span>
+                    <label><input type="checkbox" ><span>食品安全</span></label>
+                    <label><input type="checkbox" ><span>管理制度</span></label>
+                    <label><input type="checkbox" ><span>员工态度</span></label>
+                </div>
+            </div>
+            <div class="form-inline">
+                <div class="form-group">
+                    <span class="form-txt"></span>
+                    <label><input type="checkbox" ><span>食堂卫生</span></label>
+                    <label><input type="checkbox" ><span>其他</span><input class="other-reason" type="text" placeholder="输入原因"></label>
+                </div>
+            </div>
+            <div class="form-inline">
+                <div class="form-group">
+                    <span class="form-txt feed-cont">反馈内容:</span>
+                    <textarea placeholder="请尽量详细描述" id="detailed"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/feedback.js"></script>
+</body>
+</html>

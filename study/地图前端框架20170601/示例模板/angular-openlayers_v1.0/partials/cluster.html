@@ -1,0 +1,10 @@
+<div ng-controller="clusterCtrl">
+    <p>
+        <button class="btn btn-default" ng-click="changeStyle(1)">默认样式</button>
+        <button class="btn btn-success" ng-click="changeStyle(2)">自定义样式</button>
+    </p>
+    <div class="codeOuter" ng-bind="myCode"></div>
+    <p>大量图标加载可以考虑采用汇聚方法，即用olCluster。默认距离小于20像素的图标就会汇聚显示成一个图标，当然这个距离可以通过属性distance来更改</p>
+    <p>汇聚的样式可以使用默认，也可以自定义；单个图标的样式也可以通过pointStyle来自定义</p>
+    <p>属性points绑定一个数组，数组中的单个对象配置同olMarker。olStyle指定图标汇聚时的样式，也可以不指定，采用默认</p>
+</div>

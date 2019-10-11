@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>帮助文档</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <style>
+        body{
+        width: 1000px;
+        margin: auto;
+    }
+    h1{
+        margin: 10px auto 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .media{
+        line-height: 35px;
+        margin: 0;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #ccc;
+    }
+    .media .fa{
+        color: #269abc;
+        font-size: 20px;
+    }
+    .media-heading{
+        font-size: 18px;
+        font-weight: bold
+    }
+    .media li{
+        cursor: pointer;
+        list-style: none;
+    }
+    .media-heading2{
+        font-weight: bold;
+        font-size: 16;
+    }
+    .media-left{
+        float: left;
+        position: relative;
+    }
+    .media-left .fa{
+        position: relative;
+        top: 7px;
+    }
+    .media-body>.se{
+        width: 100%;
+    }
+    .se .se{
+        float: left;
+        padding: 0;
+        width: 25%;
+        height: 200px;
+    }
+    .se li{
+        color: #269abc;
+    }
+    </style>
+</head>
+<body id ="body" class="pace-done">
+    <ul id="nav"></ul>
+    <div class="content">
+        <div class="item-l h-240 db" style="width:1255px;">
+            <div class="normal-title-div">
+                <span class="normal-title">待办分类</span>
+                <span class="db-small">共<span id="all_count">59</span>项待办</span>
+            </div>
+            <div class="db-content clearfix" id="db-list">
+            </div>
+        </div>
+    </div>
+    <div class="item-l h-412 m-t-20 ctrl">
+        <ul id="ctrl_tab" class="ctrl-tab">
+            <!-- <li data-id="ctrl_0" class="active"><i class="ctrl-icon ctrl-db"></i><span>待办</span><b id="upcomingCount" class="ctrl-count">67</b></li>
+            <li data-id="ctrl_1" class=""><i class="ctrl-icon ctrl-dy"></i><span>待阅</span><b id="toReadCount" class="ctrl-count">0</b></li>
+            <li data-id="ctrl_2"><i class="ctrl-icon ctrl-dy"></i><span>待知会件</span><b id="toNotifyCount" class="ctrl-count">0</b></li>
+            <li data-id="ctrl_3" class=""><i class="ctrl-icon ctrl-kzdy"></i><span>已逾期/即将逾期</span><b id="overdueCount" class="ctrl-count">27</b></li> -->
+        </ul>
+    </div>
+<script>
+$(function(){
+    var addressUrl = 'http://xo19824309.iask.in:4588'
+    var navList = [
+        {
+            uuid:1,
+            labelName:'首页', //名字
+            labelUrl:'javascript:void(0)', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'javascript:void(0)',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+        },{
+            uuid:1,
+            labelName:'党建专栏', //名字
+            labelUrl:'/instance-web/minstone/homePage/api/oaIndex', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'javascript:void(0)',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+        },{
+            uuid:1,
+            labelName:'党建专栏2', //名字
+            labelUrl:'http://xo19824309.iask.in:4588/instance-web/minstone?name=%E4%BF%A1%E6%81%AF%E4%B8%93%E6%A0%8F&url=/rubikWeb/views/articlePage/articleList/allList', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'2', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'javascript:void(0)',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+        }
+    ];
+
+    var navHtml = '';
+    $.each(navList, function(i, item){
+        var className;
+        var labelUrl = addressUrl + item.labelUrl;
+        if(i==0){
+            className = 'menu-hover';
+        }
+        //判断打开方式及链接是否本系统
+        if(item.openType == 2){
+            labelUrl = item.labelUrl;
+        }
+        navHtml += '<li class="'+ className +'"><a target="_blank" href="'+ labelUrl +'">'+ item.labelName +'</a><span></span></li>';
+    })
+    $('#nav').html(navHtml);
+
+    var dbList = [
+        {
+            uuid:1,
+            labelName:'会议', //名字
+            labelUrl:'javascript:void(0)', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'https://xtbgyytest.digitalgd.com.cn/xtbghyapi/meetHelper/api/wx/meetingInfo/oaCountReadyMeetNum?unitId=',  //统计url
+            tjbs:'data|readyRunMeetNum',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'instance-web/static/dist/modules/index/images/hy.png',  //待办背景图
+        },{
+            uuid:1,
+            labelName:'事务', //名字
+            labelUrl:'/instance-web/minstone/homePage/api/oaIndex', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'http://localhost:8080/instance-web/minstone/homePage/api/oaCount',  //统计url
+            tjbs:'data|tranResult',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'',  //待办背景图
+        }
+    ];
+    var dbHtml = '';
+    //待办列表加载
+    $.each(dbList, function(i, item){
+        var className;
+        var bgStyle = '';
+        var labelUrl = addressUrl + item.labelUrl;
+        if(i==0){
+            className = 'menu-hover';
+        }
+        //判断打开方式及链接是否本系统
+        if(item.openType == 2){
+            labelUrl = item.labelUrl;
+        }
+        if(item.imgSrc){
+            bgStyle = 'background: url('+ item.imgSrc +') no-repeat right bottom;'  ///instance-web/static/dist/modules/index/images/hy.png
+        }
+        dbHtml += `<div class="db-content-line"></div>
+                    <div class="db-content-item db-hy" style="`+ bgStyle +`">
+                        <a target="_blank" href="`+ item.labelName +`">
+                            <h5>`+ item.labelName +`</h5>
+                            <div>
+                                <span class="db-count db-count-num">&nbsp;0</span>
+                                <i class="db-icon-play"></i>
+                            </div>
+                            <div class="db-tips">
+                            </div>
+                        </a>
+                    </div>`;
+    })
+    $('#db-list').html(dbHtml);
+
+    //待办列表数量加载
+    $.each(dbList, function(i, item){
+        if(item.countUrl && item.tjbs){
+            $.ajax({
+                type: "get",
+                url: item.countUrl,
+                dataType: "json",
+                success: function (res) {
+                    if (res) {
+                        if(item.tjbs.split('|')[2]){
+                            $('db-count-num').eq(i).text(parseInt(res[item.tjbs.split('|')[1]][item.tjbs.split('|')[2]]));
+                        }else{
+                            $('db-count-num').eq(i).text(parseInt(res[item.tjbs.split('|')[1]]));
+                        }
+                    }
+                }
+            });
+        }
+    })
+
+    var tabJson = {
+        'ctrl_0':'<li data-id="ctrl_0" class="active"><i class="ctrl-icon ctrl-db"></i><span>待办</span><b id="upcomingCount" class="ctrl-count">0</b></li>',
+        'ctrl_1':'<li data-id="ctrl_1"><i class="ctrl-icon ctrl-dy"></i><span>待阅</span><b id="toReadCount" class="ctrl-count">0</b></li>',
+        'ctrl_2':'<li data-id="ctrl_2"><i class="ctrl-icon ctrl-dy"></i><span>待知会件</span><b id="toNotifyCount" class="ctrl-count">0</b></li>',
+        'ctrl_3':'  <li data-id="ctrl_3"><i class="ctrl-icon ctrl-kzdy"></i><span>已逾期/即将逾期</span><b id="overdueCount" class="ctrl-count">0</b></li>',
+    };
+
+    //待办配置
+    var tabList = [
+        {
+            uuid:1,
+            labelName:'首页', //名字
+            labelUrl:'javascript:void(0)', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'ctrl_0',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+            //参数
+        },{
+            uuid:1,
+            labelName:'党建专栏', //名字
+            labelUrl:'/instance-web/minstone/homePage/api/oaIndex', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'1', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'ctrl_1',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+        },{
+            uuid:1,
+            labelName:'党建专栏2', //名字
+            labelUrl:'http://xo19824309.iask.in:4588/instance-web/minstone?name=%E4%BF%A1%E6%81%AF%E4%B8%93%E6%A0%8F&url=/rubikWeb/views/articlePage/articleList/allList', //链接
+            type:'0', //配置类型  0导航栏 1待办栏 2待办列表
+            openType:'2', //打开方式  0新窗口 1标签页 2新窗口外部链接
+            sortNum:1,  //排序
+            countUrl:'javascript:void(0)',  //统计url
+            tjbs:'ctrl_3',  //统计标识
+            delFlag:0,  //删除标识 0未删除 1已删除
+            isUsing:1,  //是否启用 0未启用 1启用
+            imgSrc:'javascript:void(0)',  //待办背景图
+        }
+    ];
+
+    var tabHtml = '';
+    $.each(tabList, function(i,item){
+        tabHtml += tabJson[item.tjbs];
+    });
+    $('#ctrl_tab').html(tabHtml);
+    $.each($('#ctrl_tab li span'), function(i,item){
+        $(item).text(tabList[i].labelName);
+    });
+})
+</script>
+</body>
+</html>

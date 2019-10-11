@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用餐统计</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.min.css">
+    <link rel="stylesheet" href="css/mdskin-blue.css">
+    <link rel="stylesheet" href="css/skin-sg.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/bookMeals.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="layui-v2.4.5/layui/layui.js"></script>
+    <script src="js/grid.locale-cn.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <style>
+    </style>
+</head>
+<body id ="body" class="mdskin">
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+            <img src="http://172.16.2.73:8080/AttachmentTool/minstone/attachment/downloadFile?id=82b99dbc53fa4eee9f22dee9ffb1537d&tenantCode=" alt="...">
+            <div class="carousel-caption">
+            </div>
+            </div>
+            <div class="item">
+            <img src="http://172.16.2.73:8080/AttachmentTool/minstone/attachment/downloadFile?id=82b99dbc53fa4eee9f22dee9ffb1537d&tenantCode=" alt="...">
+            <div class="carousel-caption">
+            </div>
+            </div>
+            <div class="item">
+            <img src="http://172.16.2.73:8080/AttachmentTool/minstone/attachment/downloadFile?id=82b99dbc53fa4eee9f22dee9ffb1537d&tenantCode=" alt="...">
+            <div class="carousel-caption">
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="book-meals">
+        <div class="">
+            <div class="query-group">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>选定年月:</label>
+                        <input type="text" readonly id="starTime" class="layui-input" >
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-base btn-active search-btn"><i class="fa fa-search"></i>&nbsp;查询</button>
+                        <button class="btn btn-base reset-btn"><i class="fa fa-refresh"></i>&nbsp;重置</button>
+                    </div>
+                </div>
+            </div>
+            <!-- 表格一 所有 -->
+            <div class="south clearfix jqGrid_wrapper top">
+                <!-- 表格及分页 START -->
+                <table id="grid"></table>
+                <div id="pager" class="pager"></div>
+                <!-- 表格及分页 END -->
+            </div>
+        </div>
+    </div>
+<script src="js/sysCensus.js"></script>
+</body>
+</html>

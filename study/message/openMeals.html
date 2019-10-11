@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开餐设定</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.min.css">
+    <link rel="stylesheet" href="css/mdskin-blue.css">
+    <link rel="stylesheet" href="css/skin-sg.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/remindMsg.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="layui-v2.4.5/layui/layui.js"></script>
+    <script src="js/grid.locale-cn.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <style>
+    </style>
+</head>
+<body id ="body" class="mdskin">
+    <div class="book-meals">
+        <div class="">
+            <div class="query-group">
+                <div class="form-inline">
+                    <div class="form-group">
+                        <label>选定年月:</label>
+                        <input type="text" readonly id="time" class="layui-input" placeholder="请输入">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-base btn-active search-btn"><i class="fa fa-search"></i>&nbsp;查询</button>
+                        <button class="btn btn-base reset-btn"><i class="fa fa-refresh"></i>&nbsp;重置</button>
+                    </div>
+                    <div class="form-group f-r">
+                        <button id="all-breakfast-btn" class="btn btn-base white-btn">早餐全开</button>
+                        <button id="all-lunch-btn" class="btn btn-base white-btn">中餐全开</button>
+                        <button id="all-dinner-btn" class="btn btn-base white-btn">晚餐全开</button>
+                        <button id="all-btn" class="btn btn-base white-btn">全部开餐</button>
+                        <button id="clear" class="btn btn-base white-btn"><i class="fa fa-trash"></i>&nbsp;清空</button>
+                        <button id="save" class="btn btn-base white-btn" ><i class="fa fa-check"></i>&nbsp;保存</button>
+                        <!-- <button class="btn btn-base reset-btn" id="look-menu"><i class="fa fa-file-text"></i>&nbsp;菜谱查看</button> -->
+                    </div>
+                </div>
+            </div>
+            <table id="meal-table" class="table table-bordered meal-table">
+                <colgroup>
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="25%">
+                    <col width="25%">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>
+                            <span class="dinner-span">早餐</span>
+                        </th>
+                        <th>
+                            <span class="dinner-span">中餐</span>
+                        </th>
+                        <th>
+                            <span class="dinner-span">晚餐</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr>
+                        <td>2019-04-01 星期一</td>
+                        <td><input class="breakfast-checbox" type="checkbox"></td>
+                        <td><input class="lunch-checbox" type="checkbox"></td>
+                        <td><input class="dinner-checbox" type="checkbox"></td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+<script src="js/openMeals.js"></script>
+</body>
+</html>

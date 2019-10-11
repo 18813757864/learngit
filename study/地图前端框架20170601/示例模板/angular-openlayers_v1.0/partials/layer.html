@@ -1,0 +1,12 @@
+<div ng-controller="layerCtrl">
+    <p>olLayer一般用来加载底图、河道、辖区</p>
+    <p>onLayerCreated是图层加载之后的回调方法</p>
+    <p><strong>olOverlay</strong>是用来创建弹出框的</p>
+    <div class="codeOuter" ng-bind="myCode"></div>
+    <p>
+        该指令的四个属性：<strong>coord，label，projection，templateurl</strong>。coord是弹出框左上角的经纬度坐标数组，这里须确保数组是数字型数组而非字符串；若弹框中的内容简单，则给label赋值即可，若内容较多，则用templateurl，关联一个html文件。projection的默认值是<strong>"EPSG:4326"</strong>。
+    </p>
+    <p>
+        覆盖层有个特性。就是当鼠标在覆盖层触发滚动，点击等事件时不会触发地图的相关事件。而有时我们需要覆盖层上的鼠标事件在地图能够响应就需要把label.stopEvent设置为false
+    </p>
+</div>

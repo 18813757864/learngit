@@ -1,0 +1,80 @@
+.eselect-wrap {
+  position: relative;
+  display: inline-block;
+}
+.eselect-wrap.open .fa-angle-down {
+  -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+.eselect-wrap.open .eselect-name {
+  border-color: #007aeb;
+}
+.eselect-name {
+  cursor: pointer;
+  width: 100%;
+  border: 1px solid #d9d9d9;
+  border-radius: 3px;
+  padding: 8px 12px;
+  background-color: #fff;
+  color: #999999;
+  font-size: 14px;
+  line-height: 1.2;
+}
+.eselect-pop {
+  padding: 9px 0;
+  cursor: default;
+  display: none;
+  z-index: 110000;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-shadow: 3px 3px 7px 0 #e5e5e5;
+}
+.eselect-pop.open {
+  display: block;
+}
+.eselect-indicator {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  padding-top: 30px;
+  text-align: center;
+  display: none;
+}
+.eselect-option {
+  cursor: pointer;
+  color: #666;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+.eselect-option:hover,
+.eselect-option.active {
+  background-color: #007AEB;
+  color: #FFF;
+}
+.eselect-addon {
+  cursor: pointer;
+  position: absolute;
+  font-size: 18px;
+  color: #b8b8b8;
+  line-height: 34px;
+  height: 100%;
+  top: 0;
+  right: 10px;
+}
+.eselect-addon .fa-angle-down {
+  -webkit-transform: rotate(0deg);
+      -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+  transition: -webkit-transform .3s;
+  transition: transform .3s;
+  transition: transform .3s, -webkit-transform .3s;
+}
+.eselect-hidden {
+  display: none;
+}

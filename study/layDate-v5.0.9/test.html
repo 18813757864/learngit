@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>使用 layDate 独立版</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telephone=no">
+
+  <style>
+  body{padding: 20px;}
+  .demo-input{padding-left: 10px; height: 38px; min-width: 262px; line-height: 38px; border: 1px solid #e6e6e6;  background-color: #fff;  border-radius: 2px;}
+  .demo-footer{padding: 50px 0; color: #999; font-size: 14px;}
+  .demo-footer a{padding: 0 5px; color: #01AAED;}
+  </style>
+</head>
+<body>
+<div class="demo-footer">
+  <input class="rubik-input laydate-input" autocomplete="off" type="text" name="startModifyDate" placeholder="选择发布时间"/>
+  <input class="rubik-input laydate-input" autocomplete="off" type="text" name="endModifyDate" placeholder="选择下线时间"/>
+</div>
+<script src="jquery.js"></script>
+<script src="laydate/laydate.js"></script> <!-- 改成你的路径 -->
+<script>
+
+var startDate = laydate.render({
+        elem: '[name=startModifyDate]',
+        type: 'datetime',
+        format: 'yyyy-MM-dd HH:00:00',
+        min: new Date().getTime(),
+        // btns: ['confirm'],
+        max: '2099-12-31 24:59:59',
+        btns: ['clear', 'confirm'],
+        trigger: 'click',
+        done: function (val, dates) {
+            if (val) {
+                var timeObj = {
+                    year: dates.year,
+                    month: dates.month - 1, //关键  
+                    date: dates.date,
+                    hours: dates.hours,
+                    minutes: dates.minutes,
+                    seconds: dates.seconds
+                }
+                endDate.config.min = timeObj;
+            }else{
+                endDate.config.min = {
+                    year: '1900',
+                    month: '00', //关键  
+                    date: '01',
+                    hours: '',
+                    minutes: '',
+                    seconds: ''
+                }
+            }
+            
+            if( $('[name=startModifyDate]').val() != '' && $('[name=endModifyDate]').val() != ''  ){
+                if( new Date($('[name=startModifyDate]').val().replace("-", "/")) > new Date($('[name=endModifyDate]').val().replace("-", "/"))){
+                    $('[name=startModifyDate]').val('')
+                    operationTipWarn('发布时间不得大于下线时间')
+                    return false;
+                }
+            }
+            
+            // vue.startDate = val;
+        }
+    })
+    var endDate = laydate.render({
+        elem: '[name=endModifyDate]',
+        type: 'datetime',
+        min: new Date().getTime(),
+        // btns: ['confirm'],
+        format: 'yyyy-MM-dd HH:00:00',
+        btns: ['clear', 'confirm'],
+        trigger: 'click',
+        done: function (val, dates) {
+            if (dates) {
+                startDate.config.max = {
+                    year: dates.year,
+                    month: dates.month - 1,//关键   
+                    date: dates.date,
+                    hours: dates.hours,
+                    minutes: dates.minutes,
+                    seconds: dates.seconds
+                }
+            } else{
+                startDate.config.max = {
+                    year: '2099',
+                    month: '11',//关键   
+                    date: '31',
+                    hours: '',
+                    minutes: '',
+                    seconds: ''
+                } 
+            }
+            if( $('[name=startModifyDate]').val() != '' && $('[name=endModifyDate]').val() != '' ){
+                if( new Date($('[name=startModifyDate]').val().replace("-", "/")) > new Date($('[name=endModifyDate]').val().replace("-", "/"))){
+                    operationTipWarn('下线时间不得小于发布时间');
+                    $('[name=endModifyDate]').val('')
+                    return false;
+                }
+            }
+            
+            // vue.endDate = val;
+        }
+    })
+</script>
+</body>
+</html>

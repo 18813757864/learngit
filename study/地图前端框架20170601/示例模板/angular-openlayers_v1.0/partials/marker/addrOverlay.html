@@ -1,0 +1,36 @@
+<div ng-controller="addrOverlay" style="width:385px;height:220px;">
+    <div class="closeOverlay">
+        <i class="fa fa-close" ng-click="close()" title="关闭"></i>
+    </div>
+    <div>
+        <p style="font-family:'Microsoft YaHei', 微软雅黑;line-height:35px;"><span ng-bind="addr.NAME"></span></p>
+        <div class="addrLay_pos">
+            <img src="images/zwpic.png" width="175" style="float:left;border: 1px solid #E0E0E0;margin-right:5px;" />
+            <div>
+                <ul>
+                    <li>
+                        <a>
+                            <i class="fa fa-map-marker fa-fw"></i>
+                            <span class="nowrap" style="width:172px;" ng-bind="addr.short_name" title="{{addr.short_name}}"></span>
+                        </a>
+                    </li>
+                    <li><a><i class="fa fa-phone fa-fw"></i> </a></li>
+                    <li><a><i class="fa fa-file-text-o fa-fw"></i> </a></li>
+                </ul>
+            </div>
+        </div>
+        <div>
+            <ul class="addrLay_btn">
+                <li ng-click="searchData()">
+                    <a href="#"><img src="images/nearby.png" />周边资源</a>
+                </li>
+                <li>
+                    <a> <img src="images/areaCtrl.png" />一键布控</a>
+                </li>
+                <li>
+                    <a> <img src="images/editAddr.png" />编辑位置信息</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

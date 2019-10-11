@@ -1,0 +1,214 @@
+/* 蓝色色调皮肤 */
+.mdskin .mdbtn-mid {
+  padding: 4px 16px;
+  line-height: normal;
+}
+.mdskin .mdbtn-lg {
+  padding: 10px 24px;
+  font-size: 16px;
+  line-height: normal;
+}
+.mdskin .mdbtn-sm {
+  padding: 2px 10px;
+  font-size: 14px;
+  line-height: normal;
+}
+.mdskin .mdbtn-min {
+  padding: 1px 3px;
+  font-size: 12px;
+  line-height: normal;
+}
+.mdskin .mdbtn-white,
+.mdskin .mdlayer-color .layui-layer-btn a {
+  color: #262626;
+  border: 1px solid #b1b4b9;
+  background: #ffffff;
+}
+.mdskin .mdbtn-white:hover,
+.mdskin .mdlayer-color .layui-layer-btn a:hover,
+.mdskin .mdbtn-white:focus,
+.mdskin .mdlayer-color .layui-layer-btn a:focus,
+.mdskin .mdbtn-white:active,
+.mdskin .mdlayer-color .layui-layer-btn a:active {
+  outline: #b1b4b9;
+  color: #8d8c8c;
+  background: #f4f6f7;
+}
+.mdskin .mdbtn-gray {
+  color: #000000;
+  background: #ebebeb;
+  border: 1px solid #e2dfdf;
+}
+.mdskin .mdbtn-gray:hover,
+.mdskin .mdbtn-gray:focus,
+.mdskin .mdbtn-gray:active {
+  outline: #c7cccd;
+  background: #d4d7d8;
+  border: 1px solid #c7cccd;
+}
+.mdskin .mdbtn-color,
+.mdskin .mdlayer-color .layui-layer-btn .layui-layer-btn0 {
+  color: #ffffff;
+  border-color: #759ee0;
+  background-color: #4778c7;
+}
+.mdskin .mdbtn-color:hover,
+.mdskin .mdlayer-color .layui-layer-btn .layui-layer-btn0:hover,
+.mdskin .mdbtn-color:focus,
+.mdskin .mdlayer-color .layui-layer-btn .layui-layer-btn0:focus,
+.mdskin .mdbtn-color:active,
+.mdskin .mdlayer-color .layui-layer-btn .layui-layer-btn0:active {
+  color: #ffffff;
+  border-color: #759ee0;
+  background-color: #759ee0;
+  outline: none;
+}
+.mdskin .table > thead > tr.success > td,
+.mdskin .table > tbody > tr.success > td,
+.mdskin .table > tfoot > tr.success > td,
+.mdskin .table > thead > tr.success > th,
+.mdskin .table > tbody > tr.success > th,
+.mdskin .table > tfoot > tr.success > th,
+.mdskin .table > thead > tr > td.success,
+.mdskin .table > tbody > tr > td.success,
+.mdskin .table > tfoot > tr > td.success,
+.mdskin .table > thead > tr > th.success,
+.mdskin .table > tbody > tr > th.success,
+.mdskin .table > tfoot > tr > th.success {
+  background-color: #759ee0 !important;
+}
+.mdskin .list-type > h4 {
+  border-left-color: #4778c7;
+}
+.mdskin .list-type .btn-mydefined:hover,
+.mdskin .list-type .btn-mydefined:focus {
+  border-color: #4778c7;
+  color: #194a99;
+  outline-color: #4778c7;
+}
+.mdskin #listSearch.input-search:hover,
+.mdskin #listSearch.input-search:focus {
+  outline-color: #4778c7;
+  border-color: #4778c7 !important;
+}
+/*流程表单*/
+.mdskin .ui-jqgrid .ui-jqgrid-bdiv table.table-bordered tr:hover {
+  color: #ffffff;
+  cursor: pointer;
+}
+.mdskin .ui-jqgrid .ui-jqgrid-bdiv table.table-bordered tr:hover td {
+  background-color: #4778c7 !important;
+  cursor: pointer;
+}
+.mdskin .nav.navbar-left li .btn-group span:hover,
+.mdskin .cur_active {
+  color: #4778c7;
+  border-bottom-color: #4778c7;
+}
+.mdskin .nav.navbar-right .exit .fa-times,
+.mdskin .nav.navbar-left .cur_active i,
+.mdskin .nav.navbar-left li .btn-group span:hover i {
+  color: #4778c7;
+}
+.mdskin .nav.navbar-left .other-list span:hover i,
+.mdskin .nav.navbar-left .save-li span:hover i,
+.mdskin .nav.navbar-right > li > span:hover > i {
+  color: #4778c7;
+}
+.mdskin .other-list .other-ls-con p:hover,
+.mdskin .other-list .other-ls-con p:hover i,
+.mdskin .send-list .send-ls-con p:hover,
+.mdskin .other-send-list .other-sls-con p:hover,
+.mdskin .other-send-list .other-sls-con p:hover i {
+  background: #759ee0;
+  color: #ffffff;
+}
+.mdskin .other-list span:hover,
+.mdskin .save-li span:hover,
+.mdskin .nav.navbar-right > li > span:hover,
+.mdskin .send-btns-list > li:hover {
+  color: #4778c7;
+}
+.mdskin .docRight > p:hover,
+.mdskin .docRight input:hover,
+.mdskin .docRight div:hover,
+.mdskin .docRight form:hover {
+  cursor: pointer;
+}
+.mdskin .mask-box {
+  background-color: #759ee0;
+}
+.mdskin .num-index {
+  background: #4778c7;
+}
+.mdskin .marks-table-content .fixed-table-body .t-head th.sign-thead:hover {
+  background: rgba(71, 120, 199, 0.2);
+}
+.mdskin .bubble-tooltip .circle {
+  background-color: #4778c7;
+}
+.mdskin .bubble-tooltip .triangular {
+  border-color: #4778c7 transparent transparent;
+}
+.mdskin .badge {
+  color: #4778c7;
+}
+/*会议通知*/
+.mdskin .notice-tabs a.active {
+  background-color: #4778c7;
+  color: #ffffff;
+}
+.mdskin .notice-conten .notice-tabs {
+  border-bottom: solid 1px #4778c7;
+}
+body.mdskin {
+  font-family: "Microsoft Yahei";
+  font-size: 14px;
+}
+.mdskin-bg {
+  background: #4778c7;
+}
+.mdskin-color {
+  color: #4778c7;
+}
+.mdskin-bg-color {
+  background-color: #4778c7;
+}
+.mdskin-border-color {
+  border-color: #4778c7;
+}
+.mdskin .panel {
+  margin-bottom: 0;
+}
+.mdskin .panel-info {
+  border-color: #4778c7;
+}
+.mdskin .panel-info > .panel-heading {
+  background-color: #759ee0;
+  border-color: #4778c7;
+  color: #4778c7;
+}
+.mdskin .form-control:focus {
+  border-color: #4778c7 !important;
+}
+.mdskin .md-on {
+  color: #ffffff !important;
+  border-color: #759ee0 !important;
+  background-color: #4778c7 !important;
+  outline: none !important;
+}
+.mdskin .table > thead > tr.success > td,
+.mdskin .table > tbody > tr.success > td,
+.mdskin .table > tfoot > tr.success > td,
+.mdskin .table > thead > tr.success > th,
+.mdskin .table > tbody > tr.success > th,
+.mdskin .table > tfoot > tr.success > th,
+.mdskin .table > thead > tr > td.success,
+.mdskin .table > tbody > tr > td.success,
+.mdskin .table > tfoot > tr > td.success,
+.mdskin .table > thead > tr > th.success,
+.mdskin .table > tbody > tr > th.success,
+.mdskin .table > tfoot > tr > th.success {
+  background-color: #759ee0 !important;
+  color: #ffffff;
+}

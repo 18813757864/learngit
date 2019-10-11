@@ -1,0 +1,31 @@
+<div class="editPlot">
+	<div>
+<!-- 		<i class="fa fa-minus-circle" ng-show="plotOl.open" ng-click="plotOl.open=false"></i> -->
+<!-- 		<i class="fa fa-plus-circle" ng-hide="plotOl.open" ng-click="plotOl.open=true"></i> -->
+		<span class="fa-stack" style="font-size:12px;width:20px;height:20px;line-height:20px;" ng-show="plotOl.open" ng-click="plotOl.open=false">
+		  <i class="fa fa-circle fa-stack-2x" style="font-size: 1.67em;"></i>
+		  <i class="fa fa-minus fa-stack-1x" style="color:white"></i>
+		</span>
+		<span class="fa-stack" style="font-size:12px;width:20px;height:20px;line-height:20px;" ng-hide="plotOl.open" ng-click="plotOl.open=true">
+		  <i class="fa fa-circle fa-stack-2x" style="font-size: 1.67em;"></i>
+		  <i class="fa fa-plus fa-stack-1x" style="color:white"></i>
+		</span>
+	</div>
+	<ul ng-show="plotOl.open">
+		<li>
+			<a title="边框颜色" id="plotEditStroke" ng-model="plotOl.selectedStrokeColor" color-picker default-color="#2058A5" class="font-color" colorpicker-position="auto" line-width="2">
+			  <i class="plot_line"></i>
+			</a>
+		</li>
+		<li class="ng-hide" ng-show="plotOl.type=='area'">
+			<a title="填充颜色" ng-model="plotOl.selectedFillColor" color-picker default-color="rgba(32, 88, 165, 0.4)" class="font-color" colorpicker-position="auto">
+			  <i class="plot_fill"></i>
+			</a>
+		</li>
+		<li>
+			<a ng-click="delObj()" title="删除">
+			  <i class="fa fa-close" aria-hidden="true" style="color:#d91e18;"></i>
+			</a>
+		</li>
+	</ul>
+</div>

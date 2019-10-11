@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用餐统计</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.min.css">
+    <link rel="stylesheet" href="css/mdskin-blue.css">
+    <link rel="stylesheet" href="css/skin-sg.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/bookMeals.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="layui-v2.4.5/layui/layui.js"></script>
+    <script src="js/grid.locale-cn.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <style>
+    </style>
+</head>
+<body id ="body" class="mdskin">
+    <div class="book-meals">
+        <div class="">
+            <div class="query-group">
+                <div class="form-inline">
+                    <ul class="top-tab">
+                        <li class="active"><a href="#statistics" data-toggle="tab">用餐统计</a></li>
+                        <li><a href="#gather" data-toggle="tab">每月餐费汇总</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="statistics">
+                    <ul class="statistics-ul">
+                        <li>
+                            <div class="form-inline title">
+                                <div class="form-group">
+                                    <label>日统计:</label>
+                                    <input type="text" readonly id="dayTime">
+                                </div>
+                            </div>
+                            <div class="sum">
+                                <dl class="sum-dl">
+                                    <dd class="f-l"><img src="images/dingcan.png" style="width: 56px; height: 56px;"></dd>
+                                    <dt class="sum-txt">订餐份数</dt>
+                                    <dt class="sum-num">239</dt>
+                                </dl>
+                                <dl class="sum-dl">
+                                    <dd class="f-l"><img src="images/money.png" style="width: 56px; height: 56px;"></dd>
+                                    <dt class="sum-txt">总金额</dt>
+                                    <dt class="sum-num">￥239</dt>
+                                </dl>
+                            </div>
+                            <div class="bottom-box">
+                                <div>
+                                    <span class="meal-type">早</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                                <div>
+                                    <span class="meal-type">中</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                                <div>
+                                    <span class="meal-type">晚</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="form-inline title">
+                                <div class="form-group">
+                                    <label>月统计:</label>
+                                    <input type="text" readonly id="mouthTime">
+                                </div>
+                            </div>
+                            <div class="sum">
+                                <dl class="sum-dl">
+                                    <dd class="f-l"><img src="images/dingcan.png" style="width: 56px; height: 56px;"></dd>
+                                    <dt class="sum-txt">订餐份数</dt>
+                                    <dt class="sum-num">239</dt>
+                                </dl>
+                                <dl class="sum-dl">
+                                    <dd class="f-l"><img src="images/money.png" style="width: 56px; height: 56px;"></dd>
+                                    <dt class="sum-txt">总金额</dt>
+                                    <dt class="sum-num">￥239</dt>
+                                </dl>
+                            </div>
+                            <div class="bottom-box">
+                                <div>
+                                    <span class="meal-type">早</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                                <div>
+                                    <span class="meal-type">中</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                                <div>
+                                    <span class="meal-type">晚</span>
+                                    <span class="meal-num">10份</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade in" id="gather">
+                    <div class="query-group">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <label>选定年月:</label>
+                                <input type="text" readonly id="starTime">
+                                <label>科室:</label>
+                                <input type="text">
+                                <label>姓名:</label>
+                                <input type="text">
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-base btn-active search-btn"><i class="fa fa-search"></i>&nbsp;查询</button>
+                                <button class="btn btn-base reset-btn"><i class="fa fa-refresh"></i>&nbsp;重置</button>
+                            </div>
+                            <div class="form-group f-r">
+                                <button class="btn btn-base reset-btn"></i>&nbsp;导出xls&nbsp;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="south clearfix jqGrid_wrapper top">
+                        <!-- 表格及分页 START -->
+                        <table id="grid"></table>
+                        <div id="pager" class="pager"></div>
+                        <!-- 表格及分页 END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="js/sysCensus.js"></script>
+</body>
+</html>

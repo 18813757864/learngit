@@ -1,0 +1,16 @@
+<div class="angularOl_mapTextOuter" ng-class="{1:'angularOl_mapTextVer'}[status]">
+	<div class="angularOl_mapText">
+		<textarea ng-show="note.edit" ng-model="note.text"></textarea>
+		<div class="angularOl_textOuter" ng-show="!note.edit" ng-click="close=false">{{note.text}}</div>
+	</div>
+	<div class="angularOl_mapTextBtn" ng-hide="close">
+		<div ng-if="note.edit">
+			<button class="btn btn-default" ng-click="note.edit=false"><i class="fa fa-check" style="color:#54B249"></i></button>
+			<button class="btn btn-default" ng-click="delTextlay()"><i class="fa fa-close" style="color:#d91e18;"></i></button>
+		</div>
+		<div ng-if="!note.edit">
+			<button title="编辑备注" class="btn btn-default" ng-click="note.edit=true"><i class="fa fa-pencil" style="color:#54B249"></i></button>
+			<button class="btn btn-default" ng-click="delTextlay()"><i class="fa fa-close" style="color:#d91e18;"></i></button>
+		</div>
+	</div>
+</div>

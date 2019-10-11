@@ -1,0 +1,16 @@
+<div class="plotOptions" ng-controller="plotCtrl">
+    <p>
+        <button class="btn btn-default" ng-click="changeMenu(1)">可编辑</button>
+        <button class="btn btn-success" ng-click="changeMenu(2)">不可编辑</button>
+    </p>
+    <ul>
+        <li ng-repeat="shape in plot.basicShapes" ng-click="drawPlot(shape.type)" ng-class="{true:'selected'}[mapDemo.plot40l3.type==shape.type]">
+            <img ng-src="{{shape.src}}" title="{{shape.altTxt}}" />
+        </li>
+    </ul>
+    <p>
+        <div>属性<strong>icon</strong>是指定点的图标样式，绘制非图标时可以不用icon属性</div>
+        <div>属性isEdit可以指定是否需要编辑状态</div>
+        <div>属性drawEnd是绘制结束的回调函数</div>
+    </p>
+</div>

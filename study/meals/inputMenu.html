@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>菜谱录入</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="layui-v2.4.5/layui/css/layui.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/ui.jqgrid.min.css">
+    <link rel="stylesheet" href="css/simple-calendar.css">
+    <link rel="stylesheet" href="css/mdskin-blue.css">
+    <link rel="stylesheet" href="css/skin-sg.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/bookMeals.css">
+
+    <script src="js/jquery.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="layui-v2.4.5/layui/layui.js"></script>
+    <script src="js/grid.locale-cn.js"></script>
+    <script src="js/jquery.jqGrid.min.js"></script>
+    <script src="js/simple-calendar.js"></script>
+    <style>
+    </style>
+</head>
+<body id ="body" class="mdskin">
+    <div id="left-content">
+		<div class="color-remarks">
+			<span title="已录菜谱" class="blue-block"></span><span title="已录菜谱">已录菜谱</span>
+			<span title="未录菜谱" class="white-block"></span><span title="未录菜谱">未录菜谱</span>
+			<span title="未开餐" class="gray-block"></span><span title="未开餐">未开餐</span>
+		</div>
+		<div id="dateContainer" class="sc-calendar"></div>
+	</div>
+	<div id="right-content">
+		<div class="menu-box">
+            <div class="menu-date">2019-04-25 星期四</div>
+            <ul class="menu-list">
+                <li>
+                    <span class="menu-type">早餐</span>
+                    <span class="menu-txt blue-txt">点击录入菜谱</span>
+                </li>
+                <li>
+                    <span class="menu-type">中餐</span>
+                    <span class="menu-txt"></span>
+                </li>
+                <li>
+                    <span class="menu-type">晚餐</span>
+                    <span class="menu-txt"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+     <!-- 录入菜谱的模态框= -->
+     <div id="add-box" class="add-box" style="display: none;">
+        <div class="query-group">
+            <div class="menu-show">
+                <div class="menu-date"><label><input class="f-l check-box" type="checkbox"><span>全选</span></label></div>
+                <ul class="check-list">
+                    <li><label><input class="f-l check-box" type="checkbox" ><span>全选</span></label></li>
+                    <li><label><input class="f-l check-box" type="checkbox" ><span>全选</span></label></li>
+                    <li><label><input class="f-l check-box" type="checkbox" ><span>全选</span></label></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+<script src="js/inputMenu.js"></script>
+</body>
+</html>

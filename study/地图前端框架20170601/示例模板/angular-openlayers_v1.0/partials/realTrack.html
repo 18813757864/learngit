@@ -1,0 +1,10 @@
+<div ng-controller="realTrack">
+    <p>实时跟踪与轨迹回放类似。不过实时跟踪因为是实时的，所以节点都是未知的，需要实时获取</p>
+    <div class="codeOuter" ng-bind="myCode"></div>
+    <p>
+        属性<strong>interval</strong>时间间隔，以秒为单位,代表该点距上个点的时间间隔
+        <div>属性<strong>data</strong>是一个对象，包含当前的lon，lat，direction</div>
+        <div>属性<strong>carProperties</strong>的配置同olMarker，是指轨迹回放主体【一般是车辆】</div>
+        <div>属性<strong>lineProperties</strong>指定路线的样式，也可以采用默认样式</div>
+    </p>
+</div>
